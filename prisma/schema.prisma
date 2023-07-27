@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Deportista {
+  id                Int                 @id @default(autoincrement())
+  nombre            String
+  correo            String
+  edad              Int
+  pais              String
+  registromodalidad registromodalidad[]
+}
+
+model Modalidad {
+  id                Int                 @id @default(autoincrement())
+  nombre            String?
+  registromodalidad registromodalidad[]
+}
+
+model registromodalidad {
+  id           Int        @id @default(autoincrement())
+  peso         Float
+  deportista   Deportista @relation(fields: [deportistaId], references: [id])
+  deportistaId Int // relation scalar field (used in the `@relation` attribute above)
+  modalidad    Modalidad  @relation(fields: [modalidadId], references: [id])
+  modalidadId  Int // relation scalar field (used in the `@relation` attribute above)
+}
