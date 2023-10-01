@@ -6,8 +6,12 @@ export default function NavBar() {
         <div className='w-full fixed top-0 bg-indigo-700 py-3 px-12 text-white shadow-2xl'>
 
             <div className='flex justify-between items-center'>
+                <Link to={'/'} className='hover:text-indigo-950'>
+                    <button className=''>
+                        Inicio
+                    </button>
+                </Link>
 
-                <h1>APP</h1>
 
                 <div className='flex space-x-4 '>
                     <Link to={'deportistas'} className='hover:text-indigo-950'>

@@ -8,6 +8,10 @@ import { getRegistros } from '../data/registrocontroller';
 export const loader = async () => {
 
     const registros = await getRegistros();
+    console.log(registros,'REGISTROS $$##')
+
+
+    
     return {registros:registros.registros};
 };
 
@@ -50,7 +54,7 @@ export default function deportistas() {
                                         <td className='py-3 px-6 text-center'>{registro.nombre}</td>
                                         <td className='py-3 px-6 text-center'>{registro.arranque}</td>
                                         <td className='py-3 px-6 text-center'>{registro.envion}</td>
-                                        <td className='py-3 px-6 text-center'>{registro?.totalPeso}</td>
+                                        <td className='py-3 px-6 text-center'>{registro?.arranque + registro?.envion}</td>
                                        
                                     </tr>
                                 )

@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import ContentSection from "../components/ContentSection";
+import { useNavigate } from "@remix-run/react";
 
 export const meta = () => {
   return [
@@ -8,6 +10,11 @@ export const meta = () => {
 };
 
 export default function Index() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("/deportistas")
+  }, [])
+  
   return (
    <>
    

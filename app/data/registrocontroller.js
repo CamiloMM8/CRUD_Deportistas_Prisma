@@ -29,67 +29,23 @@ export const createRegister = async (form) => {
 
 export const getRegistros = async () => {
     try {
+        const deportistas = await prisma.$queryRaw`
+    SELECT
+      d.id,
+      d.nombre,
+      d.pais,
+      COALESCE(MAX(CASE WHEN m.nombre = 'ARRANQUE' THEN rm.peso END), 0) AS arranque,
+      COALESCE(MAX(CASE WHEN m.nombre = 'ENVION' THEN rm.peso END), 0) AS envion
+    FROM Deportista d
+    LEFT JOIN registromodalidad rm ON d.id = rm.deportistaId
+    LEFT JOIN Modalidad m ON rm.modalidadId = m.id
+    GROUP BY d.id, d.nombre, d.pais
+  `;
 
-        const deportistas = await prisma.deportista.findMany({
-            include: {
-                registromodalidad: {
-                    include: {
-                        modalidad: {
-                            select: {
-                                nombre: true
-                            },
-
-                        },
-                    },
-                }
-            }
-        })
-        console.log(deportistas)
-
-        const arrayDeportistas = await Promise.all(deportistas.map(async (deportista) => {
-            const envion = await prisma.registromodalidad.findFirst({
-                where: {
-                    modalidad: {
-                        nombre: "ENVION"
-                    },
-                    id: deportista.id
-                },
-                orderBy: {
-                    peso: 'desc'
-                },
-                take: 1,
-                select: {
-                    peso: true
-                }
-            })
-            const arranque = await prisma.registromodalidad.findFirst({
-                where: {
-                    modalidad: {
-                        nombre: "ARRANQUE"
-                    },
-                    id: deportista.id
-                },
-                orderBy: {
-                    peso: 'desc'
-                },
-                take: 1,
-                select: {
-                    peso: true
-                }
-            })
-            console.log(envion, 'envion max')
-            return {
-                ...deportista,
-                envion: envion ? envion.peso : 0,
-                arranque: arranque ? arranque.peso : 0,
-                totalPeso: (envion ? envion.peso : 0) + (arranque ? arranque.peso : 0)
-            }
-        }));
-
-        console.log(arrayDeportistas, 'arrayDeportistas')
-        return { ok: true, registros: arrayDeportistas }
-        return { ok: false }
+        console.log(deportistas, 'deportistas SQL')
+        return { ok: true, registros: deportistas };
     } catch (error) {
-        return { ok: false }
+        console.log('false', error)
+        return { ok: false, registros: [] }
     }
 }
