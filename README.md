@@ -4,7 +4,7 @@ Este CRUD fue hecho con React.js, Tailwind CSS, Prisma ORM y la librería Remix 
 
 Tiene la finalidad de registrar deportistas y llevar un registro de sus mejores resultados en los pesos de las modalidades de ENVIÓN y ARRANQUE.
 
-## Pasos para iniciar la aplicacion
+## Pasos para iniciar la aplicación
 
 1. npm i
 
