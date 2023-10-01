@@ -1,62 +1,16 @@
-# Welcome to Remix!
+# CRUD Deportistas y registros de modalidades.
 
-- [Remix Docs](https://remix.run/docs)
-- [Netlify Functions](https://www.netlify.com/products/functions/)
+Este CRUD fue hecho con React.js, Tailwind CSS, Prisma ORM y la librería Remix para las rutas y la comunicación servidor-cliente.
 
-## Netlify Setup
+Tiene la finalidad de registrar deportistas y llevar un registro de sus mejores resultados en los pesos de las modalidades de ENVIÓN y ARRANQUE.
 
-1. Install the [Netlify CLI](https://www.netlify.com/products/dev/):
+## Pasos para iniciar la aplicación
 
-```sh
-npm i -g netlify-cli
-```
+1. npm i
 
-If you have previously installed the Netlify CLI, you should update it to the latest version:
+2. Agrega la variable "DATABASE_URL" en el archivo .env y proporciona la dirección de la base de datos según la documentación de Prisma. 
 
-```sh
-npm i -g netlify-cli@latest
-```
+3. npx prisma db push
 
-2. Sign up and log in to Netlify:
+4. npx prisma db seed
 
-```sh
-netlify login
-```
-
-3. Create a new site:
-
-```sh
-netlify init
-```
-
-## Development
-
-The Remix dev server starts your app in development mode, rebuilding assets on file changes. To start the Remix dev server:
-
-```sh
-npm run dev
-```
-
-Open up [http://localhost:3000](http://localhost:3000), and you should be ready to go!
-
-The Netlify CLI builds a production version of your Remix App Server and splits it into Netlify Functions that run locally. This includes any custom Netlify functions you've developed. The Netlify CLI runs all of this in its development mode.
-
-```sh
-netlify dev
-```
-
-Open up [http://localhost:3000](http://localhost:3000), and you should be ready to go!
-
-Note: When running the Netlify CLI, file changes will rebuild assets, but you will not see the changes to the page you are on unless you do a browser refresh of the page. Due to how the Netlify CLI builds the Remix App Server, it does not support hot module reloading.
-
-## Deployment
-
-There are two ways to deploy your app to Netlify, you can either link your app to your git repo and have it auto deploy changes to Netlify, or you can deploy your app manually. If you've followed the setup instructions already, all you need to do is run this:
-
-```sh
-# preview deployment
-netlify deploy --build
-
-# production deployment
-netlify deploy --build --prod
-```
