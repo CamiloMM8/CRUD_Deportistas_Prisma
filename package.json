@@ -1,6 +1,9 @@
 {
   "private": true,
   "sideEffects": false,
+  "prisma": {
+    "seed": "node prisma/seeds/modalidades.js"
+  },
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
