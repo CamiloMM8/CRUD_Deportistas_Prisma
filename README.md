@@ -10,7 +10,7 @@ Tiene la finalidad de registrar deportistas y llevar un registro de sus mejores 
 
 2. Agrega la variable "DATABASE_URL" en el archivo .env y proporciona la dirección de la base de datos según la documentación de Prisma. 
 
-3. npx prisma db seed
+3. npx prisma db push
 
-4. npx prisma db push
+4. npx prisma db seed
 
