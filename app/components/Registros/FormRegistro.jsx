@@ -13,7 +13,7 @@ export default function FormRegistro({ deportistas, modalidades }) {
     return (
         <Form method='post'>
             <input type='hidden' name='id' className='hidden' />
-            <div className='flex space-x-5'>
+            <div className='flex flex-wrap space-x-5'>
 
                 <div>
                     <label className='block text-gray-700 font-bold mb-1'>Deportista</label>

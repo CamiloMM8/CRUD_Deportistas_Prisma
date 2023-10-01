@@ -13,7 +13,7 @@ export default function FormDeportista({ deportista }) {
     return (
         <Form method='post'>
             <input type='hidden' name='id' defaultValue={defaultValue.id} className='hidden'/>
-            <div className='flex space-x-5'>
+            <div className='flex flex-wrap space-x-5'>
 
                 <div>
                     <label className='block text-gray-700 font-bold mb-1'>Nombre</label>
